@@ -1,24 +1,21 @@
+/* MPU Coach website – always the app's light cream and wood style.
+   Fonts are served from this site (no third-party font requests). */
+@font-face { font-family: "Newsreader"; src: url("fonts/newsreader-500.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("fonts/newsreader-400-italic.ttf") format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
 :root {
-  --bg: #F7F8FC;
-  --surface: #FFFFFF;
-  --ink: #172235;
-  --body: #1F2937;
-  --muted: #637087;
-  --border: #E1E6EE;
-  --accent: #2F6BFF;
-  --accent-soft: #EDF3FF;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #080A0D;
-    --surface: #141519;
-    --ink: #ECECEF;
-    --body: #D7D7DC;
-    --muted: #A7A7B0;
-    --border: #282A30;
-    --accent: #198CFF;
-    --accent-soft: #1B1D23;
-  }
+  --bg: #F4EFE6;
+  --surface: #FBF8F3;
+  --surface-2: #EFE7DA;
+  --ink: #1E1B18;
+  --body: #2E2924;
+  --muted: #6B6259;
+  --border: #E4DCCF;
+  --accent: #6B4A2E;
+  --on-accent: #FFFFFF;
+  --sage: #E6EBE3;
+  --sage-ink: #3F5A45;
+  --shadow: 0 1px 0 #E4DCCF, 0 18px 40px -26px rgba(60, 40, 20, 0.35);
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -26,35 +23,48 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--body);
-  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: var(--accent); text-decoration: none; font-weight: 600; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
-header.top { padding: 20px 0; }
+header.top { padding: 22px 0; }
 header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font-weight: 700; font-size: 18px; }
-.brand img { width: 36px; height: 36px; border-radius: 22.5%; }
-nav a { color: var(--muted); font-size: 15px; margin-left: 18px; }
-h1 { color: var(--ink); font-size: clamp(32px, 7vw, 48px); line-height: 1.12; letter-spacing: -0.02em; margin: 32px 0 16px; }
-h2 { color: var(--ink); font-size: 22px; line-height: 1.3; margin: 40px 0 12px; }
-h3 { color: var(--ink); font-size: 17px; margin: 16px 0 6px; }
+.brand { display: flex; align-items: center; gap: 10px; color: var(--ink); font: 500 21px/1.2 "Newsreader", Georgia, serif; }
+.brand:hover { text-decoration: none; }
+.brand img { width: 38px; height: 38px; border-radius: 22.5%; }
+nav a { color: var(--muted); font-size: 15px; font-weight: 500; margin-left: 18px; }
+nav a[aria-current="page"] { color: var(--accent); font-weight: 600; }
+h1, h2 { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 500; color: var(--ink); }
+h1 { font-size: clamp(34px, 8vw, 56px); hyphens: auto; overflow-wrap: break-word; line-height: 1.08; letter-spacing: -0.02em; margin: 36px 0 18px; }
+h2 { font-size: clamp(25px, 4.6vw, 30px); line-height: 1.2; letter-spacing: -0.01em; margin: 48px 0 14px; }
+h3 { color: var(--ink); font-size: 17px; line-height: 1.4; margin: 18px 0 6px; }
+.card h3:first-child { margin-top: 0; }
 p { margin: 0 0 14px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 32px 0 0; }
 .lead { font-size: 19px; color: var(--muted); max-width: 600px; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 20px 22px; margin: 12px 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; padding: 22px 24px; margin: 14px 0; box-shadow: var(--shadow); }
 .card p:last-child { margin-bottom: 0; }
-.button { display: inline-block; background: var(--accent); color: #fff; font-weight: 600; padding: 14px 22px; border-radius: 14px; }
+.card.sage { background: var(--sage); border-color: transparent; box-shadow: none; }
+.card.sage, .card.sage h3 { color: var(--sage-ink); }
+.button { display: inline-block; background: var(--accent); color: var(--on-accent); font-weight: 600; padding: 15px 24px; border-radius: 18px; }
 .button:hover { text-decoration: none; opacity: .92; }
 .muted { color: var(--muted); font-size: 15px; }
-.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 32px 0; }
-.shots img { width: 100%; border-radius: 28px; border: 1px solid var(--border); display: block; }
+.quote { font: italic 400 22px/1.45 "Newsreader", Georgia, serif; color: var(--ink); margin: 0; }
+.shots { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 36px 0 8px; }
+.shots img { width: 100%; border-radius: 30px; border: 1px solid var(--border); display: block; box-shadow: var(--shadow); }
 .features { list-style: none; padding: 0; margin: 0; }
-.features li { padding: 14px 0; border-top: 1px solid var(--border); }
-.features li strong { color: var(--ink); display: block; }
-footer { margin: 56px 0 0; padding: 28px 0 40px; border-top: 1px solid var(--border); }
+.features li { padding: 18px 0; border-top: 1px solid var(--border); }
+.features li:last-child { border-bottom: 1px solid var(--border); }
+.features li strong { color: var(--ink); display: block; font: 500 22px/1.3 "Newsreader", Georgia, serif; margin-bottom: 4px; }
+/* Privacy policy rendered from the app text */
+.policy h2 { font-size: 26px; margin-top: 44px; padding-top: 22px; border-top: 1px solid var(--border); }
+.policy h3 { margin-top: 22px; }
+footer { margin: 64px 0 0; padding: 28px 0 44px; border-top: 1px solid var(--border); }
 footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--muted); font-size: 14px; }
-footer a { color: var(--muted); }
+footer a { color: var(--muted); font-weight: 500; }
 @media (max-width: 520px) {
   nav a { margin-left: 12px; font-size: 14px; }
   .brand span { display: none; }
+  .card { padding: 20px; }
 }
